@@ -122,18 +122,15 @@ def custom_insert(input_list, index, value):
     """custom_insert(input_list, index, value) imitates
     input_list.insert(index, value)
     """
-    input_list[index:index] += [value]
+    input_list[index:index] = [value]
 
 def custom_remove(input_list, value):
     """custom_remove(input_list, value) imitates input_list.remove(value)"""
-    counter = 0
-    for stuff in input_list:
-        current_val = input_list[counter]
-        if current_val == value:
-            del input_list[counter]
+    for i in range(custom_len(input_list)):
+        if input_list[i] == value:
+            del input_list[i]
             break
-        counter += 1
-
+        
 def custom_pop(input_list):
     """custom_pop(input_list) imitates input_list.pop()"""
     popped_item = input_list[-1]
@@ -142,22 +139,16 @@ def custom_pop(input_list):
 
 def custom_index(input_list, value):
     """custom_index(input_list, value) imitates input_list.index(value)"""
-    counter = 0
-    for stuff in input_list:
-        current_val = input_list[counter]
-        if current_val == value:
-            return counter
-        counter += 1
+    for i in range(custom_len(input_list)):
+        if input_list[i] == value:
+            return i
 
 def custom_count(input_list, value):
     """custom_count(input_list, value) imitates input_list.count(value)"""
-    counter = 0
     number_times = 0
-    for stuff in input_list:
-        current_val = input_list[counter]
-        if current_val == value:
+    for i in range(custom_len(input_list)):
+        if input_list[i] == value:
             number_times += 1
-        counter += 1
 
     return number_times
 
@@ -167,12 +158,9 @@ def custom_reverse(input_list):
 
 def custom_contains(input_list, value):
     """custom_contains(input_list, value) imitates (value in input_list)"""
-    counter = 0
     for stuff in input_list:
-        current_val = input_list[counter]
-        if current_val == value:
+        if stuff == value:
             return True
-        counter += 1
     return False
 
 def custom_equality(some_list, another_list):
@@ -183,9 +171,8 @@ def custom_equality(some_list, another_list):
     if custom_len(some_list) != custom_len(another_list):
         return False
     else:
-        counter = 0
-        for stuff in some_list:
-            if some_list[counter] != another_list[counter]:
+        for i in range(custom_len(some_list)):
+            if some_list[i] != another_list[i]:
                 return False
-            counter += 1
-        return True
+                
+    return True
